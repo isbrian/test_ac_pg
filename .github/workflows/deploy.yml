@@ -26,6 +26,10 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
+      # 設定 NODE_OPTIONS 環境變數
+      - name: Set Node.js compatibility flag
+        run: export NODE_OPTIONS=--openssl-legacy-provider
+
       # 執行 Vite 的打包指令
       - name: Build project
         run: npm run build

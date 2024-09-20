@@ -20,7 +20,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 18  # 或者你可以選擇使用 16
+
+      # 更新 browserslist 資料庫
+      - name: Update caniuse-lite database
+        run: npx browserslist@latest --update-db
+
+      # 設定 NODE_OPTIONS 環境變數
+      - name: Set Node.js compatibility flag
+        run: export NODE_OPTIONS=--openssl-legacy-provider
 
       # 安裝 npm 相關的相依性
       - name: Install dependencies
